@@ -1,14 +1,31 @@
 from splinter import Browser
 from bs4 import BeautifulSoup as bs
 import time
+import os
+import pandas as pd
+import requests
+from selenium import webdriver
 
 
 def init_browser():
     # @NOTE: Replace the path with your actual path to the chromedriver
     executable_path = {"executable_path": "/usr/local/bin/chromedriver"}
-    return Browser("chrome", **executable_path, headless=False)
+    return Browser("chrome", **executable_path, headless=True)
 
-### Below is class example to be used as notes
+def scrape_info():
+    browser = init_browser()
+    
+    url = "https://mars.nasa.gov/news/"
+    browser.visit(url)
+    
+    time.sleep(5)
+    
+    html = browser.html
+    soup = BeautifulSoup(html, "html.parser")
+    
+    
+
+### Below is class example to be used as notes #####
 
 
 def scrape_info():
